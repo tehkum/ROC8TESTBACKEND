@@ -22,6 +22,7 @@ export function extractUserFromToken(decoded) {
 const verifyUserAuth = async (req, res, next) => {
   try {
     const token = req.headers.authorization;
+    console.log(token);
     const decoded = verifyToken(token);
     const userId = extractUserFromToken(decoded);
     req.user = await RocUsers.findById(userId);
